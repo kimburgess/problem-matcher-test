@@ -1,0 +1,20 @@
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download source
+        uses: actions/checkout@v2
+      - name: Install Crystal
+        uses: kimburgess/install-crystal@problem-matcher-test
+      - name: Run tests
+        run: crystal spec spec/failures.cr
+      - name: Generate compiler errors
+        if: always()
+        run: crystal build src/compiler-error.cr --no-color
+      - name: Generate compiler warnings
+        if: always()
+        run: crystal build src/compiler-warnings.cr

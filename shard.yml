@@ -1,0 +1,9 @@
+name: problem-matcher-test
+version: 0.1.0
+
+authors:
+  - kb <kim@simple.industries>
+
+crystal: 1.0.0
+
+license: MIT
